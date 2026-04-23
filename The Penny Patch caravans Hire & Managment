@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Penny Patch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f3ec;
+      color: #2f4f4f;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #2f7f7f;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero h2 {
+      font-size: 60px;
+      line-height: 1.1;
+      color: #2f7f7f;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    .hero button {
+      background: #3f8f8f;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hero img {
+      max-width: 400px;
+      border-radius: 20px;
+    }
+
+    .section {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+
+    button.book {
+      background: #e76f51;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>The Penny Patch</h1>
+  <span>Caravan Hire & Management</span>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Simple joys on a shiny little budget.</h2>
+    <p>Cosy static caravan breaks, hand-picked by The Penny Patch.</p>
+    <button onclick="scrollToCaravans()">Browse caravans →</button>
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
+</section>
+
+<section class="section" id="caravans">
+  <h2>Our caravans</h2>
+
+  <div class="card">
+    <h3>Penny Patch</h3>
+    <p>£80 per night</p>
+
+    <input id="name" placeholder="Your Name">
+    <input id="email" placeholder="Your Email">
+    <input id="nights" placeholder="Nights">
+
+    <label>Pets?</label>
+    <select id="pets" onchange="togglePets()">
+      <option>No</option>
+      <option>Yes</option>
+    </select>
+
+    <div id="petBox" style="display:none;">
+      <input id="dogs" placeholder="Number of dogs">
+      <input id="breed" placeholder="Breed">
+    </div>
+
+    <button class="book" onclick="book()">Book Now</button>
+  </div>
+
+</section>
+
+<script>
+function scrollToCaravans() {
+  document.getElementById("caravans").scrollIntoView({ behavior: "smooth" });
+}
+
+function togglePets() {
+  document.getElementById("petBox").style.display =
+    document.getElementById("pets").value === "Yes" ? "block" : "none";
+}
+
+function book() {
+  const nights = document.getElementById("nights").value || 0;
+  const dogs = document.getElementById("dogs").value || 0;
+
+  const total = (nights * 80) + (dogs * 15);
+
+  alert("Total: £" + total);
+}
+</script>
+
+</body>
+</html>
